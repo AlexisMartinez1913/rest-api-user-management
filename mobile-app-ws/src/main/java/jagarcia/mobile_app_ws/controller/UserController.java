@@ -1,17 +1,12 @@
 package jagarcia.mobile_app_ws.controller;
 
-import jagarcia.mobile_app_ws.Exception.ErrorDetails;
-import jagarcia.mobile_app_ws.Exception.ResourceNotFoundException;
 import jagarcia.mobile_app_ws.dto.UserDto;
-import jagarcia.mobile_app_ws.entity.User;
 import jagarcia.mobile_app_ws.service.IUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -61,7 +56,7 @@ public class UserController {
         return new ResponseEntity<>("User succesfully deleted!", HttpStatus.OK);
     }
 
-    /*excepcion
+    /*excepcion en el controlador
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest) {

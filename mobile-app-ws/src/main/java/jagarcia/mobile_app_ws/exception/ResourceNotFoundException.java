@@ -1,4 +1,4 @@
-package jagarcia.mobile_app_ws.Exception;
+package jagarcia.mobile_app_ws.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

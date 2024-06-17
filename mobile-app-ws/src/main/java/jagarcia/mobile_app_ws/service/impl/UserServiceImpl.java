@@ -1,17 +1,16 @@
 package jagarcia.mobile_app_ws.service.impl;
 
-import jagarcia.mobile_app_ws.Exception.ResourceNotFoundException;
+import jagarcia.mobile_app_ws.exception.EmailAlreadyExistsException;
+import jagarcia.mobile_app_ws.exception.ResourceNotFoundException;
 import jagarcia.mobile_app_ws.dto.UserDto;
 import jagarcia.mobile_app_ws.entity.User;
 import jagarcia.mobile_app_ws.mapper.AutoUserMapper;
-import jagarcia.mobile_app_ws.mapper.UserMapper;
 import jagarcia.mobile_app_ws.repository.IUserRepository;
 import jagarcia.mobile_app_ws.service.IUserService;
 import lombok.AllArgsConstructor;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +37,10 @@ public class UserServiceImpl implements IUserService {
 
         //Usando Mapstruct
 
+        Optional<User> optionalUser = iUserRepository.findByEmail(userDto.getEmail());
+        if (optionalUser.isPresent()) {
+            throw new EmailAlreadyExistsException("Email Already Exists For User");
+        }
         User user = AutoUserMapper.MAPPER.mapToUser(userDto);
 
         User savedUser = iUserRepository.save(user);
