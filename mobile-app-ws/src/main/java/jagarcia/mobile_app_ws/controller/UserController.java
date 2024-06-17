@@ -2,6 +2,7 @@ package jagarcia.mobile_app_ws.controller;
 
 import jagarcia.mobile_app_ws.dto.UserDto;
 import jagarcia.mobile_app_ws.service.IUserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UserController {
 
     //build create user REST API
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody  UserDto userDto) {
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody  UserDto userDto) {
         UserDto savedUser = iUserService.createUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 
@@ -42,7 +43,8 @@ public class UserController {
     //Build Update User
     // http://localhost:8080/api/users
     @PutMapping("{id}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId,
+                                              @RequestBody @Valid UserDto userDto) {
         userDto.setId(userId);
         UserDto updatedUser = iUserService.updateUser(userDto);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
