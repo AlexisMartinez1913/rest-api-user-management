@@ -127,11 +127,6 @@ Se han definido excepciones personalizadas para manejar casos específicos, como
 
 Esta aplicación está integrada con Swagger UI para proporcionar documentación interactiva de la API. Para acceder a Swagger UI, ejecuta la aplicación y navega a `http://localhost:8081/swagger-ui.html`.
 
-## Manejo de Excepciones
-
-### Excepciones Personalizadas
-
-Se han definido excepciones personalizadas para manejar casos específicos, como cuando un usuario no se encuentra o cuando un correo electrónico ya existe.
 
 ## Contribución
 
